@@ -1,0 +1,105 @@
+@use '../shared' as *;
+
+.signup {
+  @include flex_row_center_center;
+  width: 100vw;
+  height: 100vh;
+  &__container {
+    @include flex-column-start-start;
+    @include font-style(body);
+    font-size: small;
+    color: $color-black;
+    width: 50%;
+    border: 2px solid $color-orange;
+    border-radius: 20px;
+    padding: 20px;
+    -webkit-box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.4);
+  }
+  &__content {
+    &__title {
+      @include font-style(h1, 'title');
+      color: $color-primary;
+    }
+    &__description {
+      color: $color-black;
+    }
+    &__list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  &__form {
+    @include flex_column_start_start;
+    width: 100%;
+    &__row {
+      @include flex_row_start_start;
+      gap: 10px;
+      width: 100%;
+    }
+    &__container {
+      &__half {
+        @include flex_column_start_start;
+        width: 50%;
+        padding: 6px 0px;
+      }
+      &__button {
+        @include flex_column_end_end;
+        gap: 4px;
+        width: 90%;
+        // top | right | bottom | left
+        padding: 20px;
+      }
+    }
+    &__button {
+      @include button-primary-large-horizontal-rect-default;
+      color: $color-white;
+      &[data-hovered] {
+        @include button-primary-large-horizontal-rect-hover;
+      }
+      &[data-disabled] {
+        @include button-primary-large-horizontal-rect-disabled;
+      }
+    }
+    &__field {
+      @include flex_column_start_start;
+      width: 90%;
+      padding: 4px 6px;
+      border-radius: 6px;
+      border: 1px solid $color-blue-grey-lighten-3;
+      &__errored {
+        border: 1px solid red;
+      }
+      &__focused {
+        outline: none !important;
+        border: 1px solid $color-orange-accent-4;
+        background-color: $color-orange-lighten-5;
+      }
+      &__input {
+        border: 0px;
+        width: 98%;
+        background-color: transparent;
+        &[data-focused] {
+          border: 0px;
+          outline: none !important;
+          background-color: transparent;
+        }
+      }
+      &__label {
+        font-size: x-small;
+        &[data-errored] {
+          color: red;
+        }
+        &[data-focused] {
+          color: $color-primary;
+        }
+      }
+      &__message {
+        color: red;
+        height: 14px;
+      }
+    }
+  }
+}

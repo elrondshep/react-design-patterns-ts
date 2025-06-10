@@ -1,0 +1,51 @@
+@use '../shared' as *;
+
+.product_card {
+  @include flex-column-space-between-start;
+  @include font-style(body);
+  gap: 10px;
+  font-size: small;
+  color: $color-black;
+  width: 50%;
+  border: 2px solid $color-orange;
+  border-radius: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.4);
+  &__title {
+    @include font-style(h2, 'title');
+    color: $color-primary;
+  }
+  &__description {
+    color: $color-black;
+  }
+  &__category {
+    &__title {
+      color: $color-black;
+      font-weight: bold;
+      padding-right: 4px;
+    }
+    &__content {
+      color: $color-black;
+    }
+  }
+  &__rating {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+  }
+  &__tags {
+    @include flex-row-start-center;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+    &__tag {
+      background-color: orange;
+      border-radius: 20px;
+      color: $color-white;
+      font-weight: bold;
+      padding: 6px;
+    }
+  }
+}

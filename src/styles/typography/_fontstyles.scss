@@ -1,0 +1,84 @@
+@use "sass:map";
+$typography-system: (
+  desktop: (
+    h1: (26, normal, 400),
+    h2: (18, normal, 700),
+    subheader: (12, 14, 400),
+    body: (10),
+    body2: (8),
+    paragraph1: (14, 20, 300),
+    paragraph2: (12, 18, 300),
+  ),
+  large: (),
+  mobile: (),
+);
+// Use two pixel values to convert line-height into a unitless number
+// @example scss Input
+//   p {
+//     font-size: 16px;
+//     line-height: line-height(16, 30);
+//   }
+@function line-height($font-size, $line-height) {
+  @if $line-height==normal {
+    @return normal;
+  }
+  @return calc($line-height / $font-size);
+}
+
+// Use two pixel values to convert letter-spacing into an em value
+// @example scss Input
+//   p {
+//     font-size: 16px;
+//     // letter-spacing: -0.1px;
+//     letter-spacing: letter-spacing(16, -0.1);
+//   }
+@function letter-spacing($font-size, $letter-spacing) {
+  @if $letter-spacing==normal {
+    @return normal;
+  }
+  @return calc($line-height / $font-size) * 1em;
+}
+
+// Define font-size, line-height, letter-spacing and font-weight in mixin
+//
+// @example scss Input
+//   p {
+//     font-size: 16px;
+//     letter-spacing: -0.1px;
+//     line-height: 1.5; // This is line-height 24px and font-size: 16px
+//     @include font-size(16, 24, -0.1)
+//   }
+@mixin font-size($font-size, $line-height: normal, $font-weight: normal, $letter-spacing: normal) {
+  font-size: calc($font-size * 0.1rem);
+  line-height: line-height($font-size, $line-height);
+  font-weight: $font-weight;
+  @if $letter-spacing !=0 {
+    letter-spacing: letter-spacing($font-size, $letter-spacing);
+  }
+}
+
+// Gets the font styles for a style type (defined in the map above).
+//
+// @example scss Input
+//   p {
+//     @include font-style(body1)
+//   }
+@mixin font-style($style, $font-family: 'body') {
+  @if $font-family == 'title' {
+    font-family: "Alumni Sans", sans-serif;
+  } @else {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    // font-family: "Inter", sans-serif;
+  }
+
+  $desktop: map.get($typography-system, desktop);
+  @if (map.has-key($desktop, $style)) {
+    @include font-size(map.get($desktop, $style) ...);
+  }
+  // NOTE (joshua): When we use breakpoints we will want to use this paradigm
+  // @if (map-has-key($desktop, $style)) {
+  //   @include desktop {
+  //     @include font-size(map-get($desktop, $style) ...);
+  //   }
+  // }
+}

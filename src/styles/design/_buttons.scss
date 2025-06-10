@@ -1,0 +1,511 @@
+@use '../variables' as *;
+@use '../typography' as *;
+@use '../mixins' as *;
+
+@mixin button($ordinal: primary, $size: large, $orientation: horizontal, $shape: rect) {
+  gap: 6px;
+  @if $ordinal == primary {
+    background: $color-primary;
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    border: 1px solid transparent;
+  } @else {
+    background: $color-secondary;
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    border: 1px solid $color-primary;
+  }
+  @if $shape == circle {
+    border-radius: 50%;
+    @if $size == xlarge {
+      padding: 20px;
+      width: 64px;
+      height: 64px;
+    } @else if $size == large {
+      padding: 20px;
+      width: 44px;
+      height: 44px;
+    } @else if $size == medium {
+      padding: 15px;
+      width: 32px;
+      height: 32px;
+    } @else {
+      padding: 10px;
+      width: 24px;
+      height: 24px;
+    }
+  } @else if $shape == rect {
+    border-radius: 6px;
+    @if $size == large {
+      padding: 14px 18px;
+      min-height: 44px;
+    } @else if $size == medium {
+      padding: 10px 18px;
+      min-height: 32px;
+    } @else {
+      padding: 6px 18px;
+    }
+  } @else if $shape == combo {
+    border-radius: 6px;
+    padding: 14px 18px;
+    min-height: 44px;
+  } @else {
+    border-radius: 8px;
+    @if $size == large {
+      padding: 20px;
+      width: 44px;
+      height: 44px;
+    } @else if $size == medium {
+      padding: 15px;
+      width: 32px;
+      height: 32px;
+    } @else {
+      padding: 10px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+  @if $orientation == horizontal {
+    @include flex-row-center-center;
+  } @else if $orientation == vertical {
+    @include flex-column-center-center;
+  } @else {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@mixin button-label-white {
+  @include font-style(button1);
+  color: $color-white;
+}
+@mixin button-label-disabled {
+  @include font-style(button1);
+  color: $color-white-30a;
+}
+
+// The remainder of the mixins follow the naming format of:
+// <type>-<ordinal>-<size>-<orientation>-<shape>-<state>
+//
+// @example scss Input
+//   element {
+//     @include flexbase();
+//   }
+
+// Rect
+@mixin button-primary-large-horizontal-rect-default {
+  @include button();
+}
+@mixin button-primary-large-horizontal-rect-hover {
+  @include button();
+  background: $color-secondary;
+}
+@mixin button-primary-large-horizontal-rect-disabled {
+  @include button();
+  background: $color-orange-lighten-1;
+}
+@mixin button-primary-medium-horizontal-rect-default {
+  @include button($size: medium);
+}
+@mixin button-primary-medium-horizontal-rect-hover {
+  @include button($size: medium);
+  background: $color-secondary;
+}
+@mixin button-primary-medium-horizontal-rect-disabled {
+  @include button($size: medium);
+  background: $color-orange-lighten-1;
+}
+@mixin button-primary-small-horizontal-rect-default {
+  @include button($size: small);
+}
+@mixin button-primary-small-horizontal-rect-hover {
+  @include button($size: small);
+  background: $color-secondary;
+}
+@mixin button-primary-small-horizontal-rect-disabled {
+  @include button($size: small);
+  background: $color-orange-lighten-1;
+}
+@mixin button-secondary-large-horizontal-rect-default {
+  @include button($ordinal: secondary);
+}
+@mixin button-secondary-large-horizontal-rect-hover {
+  @include button($ordinal: secondary);
+  background: $color-secondary;
+}
+@mixin button-secondary-large-horizontal-rect-disabled {
+  @include button($ordinal: secondary);
+  background: $color-orange-lighten-1;
+}
+@mixin button-secondary-medium-horizontal-rect-default {
+  @include button($ordinal: secondary, $size: medium);
+  background: $color-secondary;
+}
+@mixin button-secondary-medium-horizontal-rect-hover {
+  @include button($ordinal: secondary, $size: medium);
+  background: $color-orange-lighten-1;
+}
+@mixin button-secondary-medium-horizontal-rect-disabled {
+  @include button($ordinal: secondary, $size: medium);
+  background: $color-orange-lighten-1;
+}
+@mixin button-secondary-small-horizontal-rect-default {
+  @include button($ordinal: secondary, $size: small);
+  background: $color-secondary;
+}
+@mixin button-secondary-small-horizontal-rect-hover {
+  @include button($ordinal: secondary, $size: small);
+  background: $color-orange-lighten-1;
+}
+@mixin button-secondary-small-horizontal-rect-disabled {
+  @include button($ordinal: secondary, $size: small);
+  background: $color-white-10a;
+}
+
+// Icon Circle
+@mixin icon-primary-large-default-circle-default {
+  @include button($size: large, $shape: circle, $orientation: default);
+  background: $color-primary;
+}
+@mixin icon-primary-large-default-circle-hover {
+  @include button($size: large, $shape: circle, $orientation: default);
+  background: $color-secondary;
+}
+@mixin icon-primary-large-default-circle-disabled {
+  @include button($size: large, $shape: circle, $orientation: default);
+  background: $color-orange-lighten-1;
+  cursor: default;
+}
+@mixin icon-primary-medium-default-circle-default {
+  @include button($size: medium, $shape: circle, $orientation: default);
+  background: $color-primary;
+}
+@mixin icon-primary-medium-default-circle-hover {
+  @include button($size: medium, $shape: circle, $orientation: default);
+  background: $color-secondary;
+  cursor: pointer;
+}
+@mixin icon-primary-medium-default-circle-disabled {
+  @include button($size: medium, $shape: circle, $orientation: default);
+  background: $color-orange-lighten-1;
+  cursor: default;
+}
+@mixin icon-primary-small-default-circle-default {
+  @include button($size: small, $shape: circle, $orientation: default);
+  background: $color-primary;
+}
+@mixin icon-primary-small-default-circle-hover {
+  @include button($size: small, $shape: circle, $orientation: default);
+  background: $color-secondary;
+  cursor: pointer;
+}
+@mixin icon-primary-small-default-circle-disabled {
+  @include button($size: small, $shape: circle, $orientation: default);
+  background: $color-orange-lighten-1;
+  cursor: default;
+}
+@mixin icon-secondary-xlarge-default-circle-default {
+  @include button(
+    $ordinal: secondary,
+    $size: xlarge,
+    $shape: circle,
+    $orientation: default
+  );
+  background: $color-secondary;
+}
+@mixin icon-secondary-xlarge-default-circle-hover {
+  @include button(
+    $ordinal: secondary,
+    $size: xlarge,
+    $shape: circle,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+@mixin icon-secondary-xlarge-default-circle-disabled {
+  @include button(
+    $ordinal: secondary,
+    $size: xlarge,
+    $shape: circle,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: default;
+}
+@mixin icon-secondary-large-default-circle-default {
+  @include button(
+    $ordinal: secondary,
+    $size: large,
+    $shape: circle,
+    $orientation: default
+  );
+  background: $color-secondary;
+}
+@mixin icon-secondary-large-default-circle-hover {
+  @include button(
+    $ordinal: secondary,
+    $size: large,
+    $shape: circle,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+@mixin icon-secondary-large-default-circle-disabled {
+  @include button(
+    $ordinal: secondary,
+    $size: large,
+    $shape: circle,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: default;
+}
+@mixin icon-secondary-medium-default-circle-default {
+  @include button(
+    $ordinal: secondary,
+    $size: medium,
+    $shape: circle,
+    $orientation: default
+  );
+  background: $color-secondary;
+}
+@mixin icon-secondary-medium-default-circle-hover {
+  @include button(
+    $ordinal: secondary,
+    $size: medium,
+    $shape: circle,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+@mixin icon-secondary-medium-default-circle-disabled {
+  @include button(
+    $ordinal: secondary,
+    $size: medium,
+    $shape: circle,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: default;
+}
+@mixin icon-secondary-small-default-circle-default {
+  @include button(
+    $ordinal: secondary,
+    $size: small,
+    $shape: circle,
+    $orientation: default
+  );
+  background: $color-secondary;
+}
+@mixin icon-secondary-small-default-circle-hover {
+  @include button(
+    $ordinal: secondary,
+    $size: small,
+    $shape: circle,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+@mixin icon-secondary-small-default-circle-disabled {
+  @include button(
+    $ordinal: secondary,
+    $size: small,
+    $shape: circle,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: default;
+}
+
+// Icon Square
+@mixin icon-primary-large-default-square-default {
+  @include button($size: large, $shape: square, $orientation: default);
+  background: $color-primary;
+}
+@mixin icon-primary-large-default-square-hover {
+  @include button($size: large, $shape: square, $orientation: default);
+  background: $color-secondary;
+}
+@mixin icon-primary-large-default-square-disabled {
+  @include button($size: large, $shape: square, $orientation: default);
+  background: $color-orange-lighten-1;
+  cursor: default;
+}
+@mixin icon-primary-medium-default-square-default {
+  @include button($size: medium, $shape: square, $orientation: default);
+  background: $color-primary;
+}
+@mixin icon-primary-medium-default-square-hover {
+  @include button($size: medium, $shape: square, $orientation: default);
+  background: $color-secondary;
+  cursor: pointer;
+}
+@mixin icon-primary-medium-default-square-disabled {
+  @include button($size: medium, $shape: square, $orientation: default);
+  background: $color-orange-lighten-1;
+  cursor: default;
+}
+@mixin icon-primary-small-default-square-default {
+  @include button($size: small, $shape: square, $orientation: default);
+  background: $color-primary;
+}
+@mixin icon-primary-small-default-square-hover {
+  @include button($size: small, $shape: square, $orientation: default);
+  background: $color-secondary;
+  cursor: pointer;
+}
+@mixin icon-primary-small-default-square-disabled {
+  @include button($size: small, $shape: square, $orientation: default);
+  background: $color-orange-lighten-1;
+  cursor: default;
+}
+@mixin icon-secondary-large-default-square-default {
+  @include button(
+    $ordinal: secondary,
+    $size: large,
+    $shape: square,
+    $orientation: default
+  );
+  background: $color-secondary;
+}
+@mixin icon-secondary-large-default-square-hover {
+  @include button(
+    $ordinal: secondary,
+    $size: large,
+    $shape: square,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+@mixin icon-secondary-large-default-square-disabled {
+  @include button(
+    $ordinal: secondary,
+    $size: large,
+    $shape: square,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: default;
+}
+@mixin icon-secondary-medium-default-square-default {
+  @include button(
+    $ordinal: secondary,
+    $size: medium,
+    $shape: square,
+    $orientation: default
+  );
+  background: $color-secondary;
+}
+@mixin icon-secondary-medium-default-square-hover {
+  @include button(
+    $ordinal: secondary,
+    $size: medium,
+    $shape: square,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+@mixin icon-secondary-medium-default-square-disabled {
+  @include button(
+    $ordinal: secondary,
+    $size: medium,
+    $shape: square,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: default;
+}
+@mixin icon-secondary-small-default-square-default {
+  @include button(
+    $ordinal: secondary,
+    $size: small,
+    $shape: square,
+    $orientation: default
+  );
+  background: $color-secondary;
+}
+@mixin icon-secondary-small-default-square-hover {
+  @include button(
+    $ordinal: secondary,
+    $size: small,
+    $shape: square,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+@mixin icon-secondary-small-default-square-disabled {
+  @include button(
+    $ordinal: secondary,
+    $size: small,
+    $shape: square,
+    $orientation: default
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: default;
+}
+
+// Combo
+@mixin combo-primary-large-vertical-combo-default {
+  @include button($size: large, $shape: combo, $orientation: vertical);
+  background: $color-primary;
+}
+@mixin combo-primary-large-vertical-combo-hover {
+  @include button($size: large, $shape: combo, $orientation: vertical);
+  background: $color-secondary;
+}
+@mixin combo-primary-large-vertical-combo-disabled {
+  @include button($size: large, $shape: combo, $orientation: vertical);
+  background: $color-orange-lighten-1;
+  cursor: default;
+}
+@mixin combo-secondary-large-vertical-combo-default {
+  @include button(
+    $ordinal: secondary,
+    $size: large,
+    $shape: combo,
+    $orientation: vertical
+  );
+  background: $color-secondary;
+}
+@mixin combo-secondary-large-vertical-combo-hover {
+  @include button(
+    $ordinal: secondary,
+    $size: large,
+    $shape: combo,
+    $orientation: vertical
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+@mixin combo-secondary-large-vertical-combo-disabled {
+  @include button(
+    $ordinal: secondary,
+    $size: large,
+    $shape: combo,
+    $orientation: vertical
+  );
+  background: $color-orange-lighten-1;
+  border: 1px solid transparent;
+  cursor: default;
+}

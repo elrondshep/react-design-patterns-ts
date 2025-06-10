@@ -1,0 +1,124 @@
+// Sass Mixins - Flex items
+//
+// Each mixin in this file should have display: [flex|inline-flex]
+
+
+// Base for the flex mixins. Set display flex and center children horizontally and vertically
+//
+// @parameter {string} display: [flex|inline-flex]
+// @parameter {string} direction: [row|column]
+// @parameter {string} justifyContent: [start|center|space-between|space-around|space-evenly]
+// @parameter {string} alignItems: [stretch|center|start|end]
+
+// @example scss Input
+//   element {
+//     @include flexbase($display:inline-flex, $justifyContent:start);
+//   }
+@mixin flexbase(
+  $display: flex,
+  $dir: row,
+  $justifyContent: null,
+  $alignItems: null
+) {
+  display: $display;
+  flex-direction: $dir;
+
+  @if $justifyContent {
+    justify-content: $justifyContent;
+  }
+  @if $alignItems {
+    align-items: $alignItems;
+  }
+}
+
+// The remainder of the mixins follow the naming format of:
+//   <display-<dir>-<justifyContent>-<alignItems>
+//
+// @example scss Input
+//   element {
+//     @include flexbase();
+//   }
+@mixin flex-row-start {
+  @include flexbase();
+}
+@mixin flex-row-start-start {
+  @include flexbase($justifyContent: flex-start, $alignItems: flex-start);
+}
+@mixin flex-row-start-center {
+  @include flexbase($justifyContent: flex-start, $alignItems: center);
+}
+@mixin flex-row-start-end {
+  @include flexbase($justifyContent: flex-start, $alignItems: flex-end);
+}
+@mixin flex-row-center-start {
+  @include flexbase($justifyContent: center, $alignItems: flex-start);
+}
+@mixin flex-row-center-center {
+  @include flexbase($justifyContent: center, $alignItems: center);
+}
+@mixin flex-row-center-end {
+  @include flexbase($justifyContent: center, $alignItems: flex-end);
+}
+@mixin flex-row-end-start {
+  @include flexbase($justifyContent: flex-end, $alignItems: flex-start);
+}
+@mixin flex-row-end-center {
+  @include flexbase($justifyContent: flex-end, $alignItems: center);
+}
+@mixin flex-row-end-end {
+  @include flexbase($justifyContent: flex-end, $alignItems: flex-end);
+}
+@mixin flex-row-space-between {
+  @include flexbase($dir: row, $justifyContent: space-between);
+}
+@mixin flex-row-space-between-start {
+  @include flexbase($dir: row, $justifyContent: space-between, $alignItems: flex-start);
+}
+@mixin flex-row-space-between-center {
+  @include flexbase($dir: row, $justifyContent: space-between, $alignItems: center);
+}
+@mixin flex-row-space-between-end {
+  @include flexbase($dir: row, $justifyContent: space-between, $alignItems: flex-end);
+}
+@mixin flex-column {
+  @include flexbase($dir: column);
+}
+@mixin flex-column-start-start {
+  @include flexbase($dir: column, $justifyContent: flex-start, $alignItems: flex-start);
+}
+@mixin flex-column-start-center {
+  @include flexbase($dir: column, $justifyContent: flex-start, $alignItems: center);
+}
+@mixin flex-column-start-end {
+  @include flexbase($dir: column, $justifyContent: flex-start, $alignItems: flex-end);
+}
+@mixin flex-column-center-start {
+  @include flexbase($dir: column, $justifyContent: center, $alignItems: flex-start);
+}
+@mixin flex-column-center-center {
+  @include flexbase($dir: column, $justifyContent: center, $alignItems: end);
+}
+@mixin flex-column-center-end {
+  @include flexbase($dir: column, $justifyContent: center, $alignItems: flex-end);
+}
+@mixin flex-column-end-start {
+  @include flexbase($dir: column, $justifyContent: flex-end, $alignItems: flex-start);
+}
+@mixin flex-column-end-center {
+  @include flexbase($dir: column, $justifyContent: flex-end, $alignItems: center);
+}
+@mixin flex-column-end-end {
+  @include flexbase($dir: column, $justifyContent: flex-end, $alignItems: flex-end);
+}
+@mixin flex-column-space-between {
+  @include flexbase($dir: column, $justifyContent: space-between);
+}
+@mixin flex-column-space-between-start {
+  @include flexbase($dir: column, $justifyContent: space-between, $alignItems: flex-start);
+}
+@mixin flex-column-space-between-center {
+  @include flexbase($dir: column, $justifyContent: space-between, $alignItems: center);
+}
+@mixin flex-column-space-between-end {
+  @include flexbase($dir: column, $justifyContent: space-between, $alignItems: flex-end);
+}
