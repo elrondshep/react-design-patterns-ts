@@ -5,7 +5,7 @@ import { lazy, Suspense, useEffect, useRef } from 'react'
 import Loading from '../loading'
 
 const LazyLoadingProduct = lazy(
-  () => import('@/components/lazyLoadComponents/LazyLoadingProduct')
+  () => import('@/components/lazyLoad/LazyLoadingProduct')
 )
 
 const LazyLoadComponents = () => {

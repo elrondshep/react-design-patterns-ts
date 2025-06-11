@@ -1,9 +1,12 @@
-import CompoundExample from '@/components/compoundComponents/CompoundExample'
+import ControlledExample from '@/components/controlled/ControlledExample'
 import ExampleHome from '@/components/ExampleHome'
 import Loading from '@/components/loading'
 import '@/styles/pages/home.scss'
 import { lazy, Suspense, useState } from 'react'
 
+const CompoundExample = lazy(
+  () => import('@/components/compound/CompoundExample')
+)
 const ContainerPresentation = lazy(
   () => import('@/components/containerPresentation/ContainerPresentation')
 )
@@ -15,13 +18,11 @@ const ProvidersExample = lazy(
   () => import('@/components/providersExample/ProvidersExample')
 )
 const LazyLoadComponents = lazy(
-  () => import('@/components/lazyLoadComponents/LazyLoadComponents')
+  () => import('@/components/lazyLoad/LazyLoadExample')
 )
-const MemoExample = lazy(
-  () => import('@/components/memoization/MemoizationComponent')
-)
+const MemoExample = lazy(() => import('@/components/memoization/Memoization'))
 const ReducerComponent = lazy(
-  () => import('@/components/reducerComponents/ReducerComponent')
+  () => import('@/components/reducer/ReducerExample')
 )
 
 const menuOptions = [
@@ -34,6 +35,7 @@ const menuOptions = [
   'State Reducers',
   'Lazy Load Components',
   'Memoization',
+  'Controlled & Uncontrolled',
 ]
 function Home() {
   const [exampleOption, setExampleOption] = useState<string>('Home')
@@ -95,6 +97,11 @@ function Home() {
         {exampleOption === 'State Reducers' && (
           <Suspense fallback={<Loading />}>
             <ReducerComponent />
+          </Suspense>
+        )}
+        {exampleOption === 'Controlled & Uncontrolled' && (
+          <Suspense fallback={<Loading />}>
+            <ControlledExample />
           </Suspense>
         )}
       </div>
