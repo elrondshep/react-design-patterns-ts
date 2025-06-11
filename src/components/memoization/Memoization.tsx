@@ -3,7 +3,7 @@ import '@/styles/components/memoization.scss'
 import hljs from 'highlight.js'
 import { useEffect, useRef } from 'react'
 
-const MemoizationComponent = () => {
+export default function MemoizationComponent() {
   const memoComponentRef = useRef(null)
   const useMemoRef = useRef(null)
   const useCallbackRef = useRef(null)
@@ -108,5 +108,3 @@ const ParentComponent = () => {
     </div>
   )
 }
-
-export default MemoizationComponent

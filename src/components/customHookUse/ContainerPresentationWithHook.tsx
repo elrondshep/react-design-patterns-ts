@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import ProductList from '../productList'
 import useFetchProducts from './useFetchProducts'
 
-const ContainerPresentationWithHook = () => {
+export default function ContainerPresentationWithHook() {
   const [fetchIndex, setFetchIndex] = useState<number>(0)
   const { products, isLoading, error } = useFetchProducts({
     skip: fetchIndex,
@@ -252,5 +252,3 @@ export default MainPresentation
     </div>
   )
 }
-
-export default ContainerPresentationWithHook

@@ -8,7 +8,7 @@ const LazyLoadingProduct = lazy(
   () => import('@/components/lazyLoad/LazyLoadingProduct')
 )
 
-const LazyLoadComponents = () => {
+export default function LazyLoadComponents() {
   const lazyLoadComponentRef = useRef(null)
   useEffect(() => {
     if (lazyLoadComponentRef.current) {
@@ -59,4 +59,3 @@ const LazyLoadingProduct = lazy(() => import('@/components/lazyLoadComponents/La
     </div>
   )
 }
-export default LazyLoadComponents

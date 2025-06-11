@@ -10,7 +10,9 @@ export interface WithToggleProps {
 type PropsWithToggle<P extends object> = P & WithToggleProps
 
 // Create the HOC function
-function withToggle<P extends object>(WrappedComponent: ComponentType<P>) {
+export default function withToggle<P extends object>(
+  WrappedComponent: ComponentType<P>
+) {
   return (props: PropsWithToggle<P>) => {
     const [isToggled, setIsToggled] = useState(false)
 
@@ -28,5 +30,3 @@ function withToggle<P extends object>(WrappedComponent: ComponentType<P>) {
     )
   }
 }
-
-export default withToggle

@@ -17,7 +17,7 @@ interface State {
 }
 
 // Reducing function to handle actions and update state
-const TodoReducer = (state: State, action: Action): State => {
+export default function TodoReducer(state: State, action: Action): State {
   switch (action.type) {
     case 'ADD_TODO':
       return {
@@ -49,5 +49,3 @@ const TodoReducer = (state: State, action: Action): State => {
       return state
   }
 }
-
-export default TodoReducer

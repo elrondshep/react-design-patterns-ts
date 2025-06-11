@@ -2,8 +2,6 @@ import router from '@/routes'
 import '@/styles/App.scss'
 import { RouterProvider } from 'react-router-dom'
 
-function App() {
+export default function App() {
   return <RouterProvider router={router} />
 }
-
-export default App

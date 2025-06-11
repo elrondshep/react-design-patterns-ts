@@ -9,7 +9,9 @@ export type WithLoadingProps = {
 type PropsWithLoading<P extends object> = P & WithLoadingProps
 
 // Create the HOC function
-const withLoading = <P extends object>(WrappedComponent: ComponentType<P>) => {
+export default function withLoading<P extends object>(
+  WrappedComponent: ComponentType<P>
+) {
   return (props: PropsWithLoading<P>) => {
     const [isLoading, setIsLoading] = useState(true)
 
@@ -23,5 +25,3 @@ const withLoading = <P extends object>(WrappedComponent: ComponentType<P>) => {
     return <WrappedComponent {...props} isLoading={isLoading} />
   }
 }
-
-export default withLoading

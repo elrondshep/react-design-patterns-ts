@@ -1,7 +1,7 @@
 import { useProductContext } from '@/providers/productProvider'
 import '@/styles/components/productCard.scss'
 
-const LazyLoadingProduct = () => {
+export default function LazyLoadingProduct() {
   const product = useProductContext()
   return (
     <div className="product_card">
@@ -24,4 +24,3 @@ const LazyLoadingProduct = () => {
     </div>
   )
 }
-export default LazyLoadingProduct

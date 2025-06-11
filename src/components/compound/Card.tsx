@@ -6,7 +6,10 @@ type CardProps = {
   children: React.ReactNode
 }
 
-const Card = ({ children, productIdx = 0 }: CardProps) => {
+export default function Card({
+  children,
+  productIdx = 0,
+}: Readonly<CardProps>) {
   return (
     <ProductProvider productIndex={productIdx}>
       <div className="product_card">{children}</div>
@@ -49,5 +52,3 @@ Card.Tags = () => {
     </div>
   )
 }
-
-export default Card

@@ -3,7 +3,7 @@ import '@/styles/components/controlledComponent.scss'
 import hljs from 'highlight.js'
 import { useEffect, useRef } from 'react'
 
-const ControlledExample = () => {
+export default function ControlledExample() {
   const controlledRef = useRef(null)
   const uncontrolledRef = useRef(null)
   const uncontrolledObjectRef = useRef(null)
@@ -175,4 +175,3 @@ export default ControlledForm
     </div>
   )
 }
-export default ControlledExample

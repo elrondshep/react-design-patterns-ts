@@ -8,7 +8,11 @@ interface ProductListProps {
   products: Product[]
 }
 
-const ProductList = ({ loading, error, products }: ProductListProps) => {
+export default function ProductList({
+  loading,
+  error,
+  products,
+}: Readonly<ProductListProps>) {
   if (loading && !error) return <Loading />
   if (!loading && error) return <div>Error fetching products.</div>
   if (!products) return null
@@ -21,5 +25,3 @@ const ProductList = ({ loading, error, products }: ProductListProps) => {
     </ul>
   )
 }
-
-export default ProductList

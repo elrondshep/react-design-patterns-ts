@@ -6,12 +6,12 @@ type BaseComponentProps = WithLoadingProps &
     message: string
   }
 
-const BaseComponent: React.FC<BaseComponentProps> = ({
+export default function BaseComponent({
   message,
   isToggled,
   toggle,
   isLoading,
-}) => {
+}: BaseComponentProps) {
   if (isLoading) {
     return <div>Loading...</div>
   }
@@ -27,5 +27,3 @@ const BaseComponent: React.FC<BaseComponentProps> = ({
     </div>
   )
 }
-
-export default BaseComponent

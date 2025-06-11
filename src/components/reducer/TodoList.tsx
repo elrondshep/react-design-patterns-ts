@@ -2,7 +2,7 @@ import { useReducer } from 'react'
 import ToggleReducer from './TodoReducer'
 
 // Example component using the State Reducer Pattern
-const TodoList: React.FC = () => {
+export default function TodoList() {
   // Use the useReducer hook to manage state with the defined reducer
   const [state, dispatch] = useReducer(ToggleReducer, { todos: [] })
 
@@ -54,5 +54,3 @@ const TodoList: React.FC = () => {
     </div>
   )
 }
-
-export default TodoList

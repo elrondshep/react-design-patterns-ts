@@ -4,7 +4,7 @@ import hljs from 'highlight.js'
 import { useEffect, useRef, useState } from 'react'
 import Card from './Card'
 
-const CompoundExample = () => {
+export default function CompoundExample() {
   const [cardIndex, setCardIndex] = useState<number>(0)
   const firstComponentRef = useRef(null)
   const secondComponentRef = useRef(null)
@@ -346,5 +346,3 @@ export { ProductProvider, useProductContext }
     </div>
   )
 }
-
-export default CompoundExample

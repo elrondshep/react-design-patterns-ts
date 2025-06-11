@@ -9,7 +9,10 @@ type ProductProviderProps = {
   productIndex: number
 }
 
-const ProductProvider = ({ children, productIndex }: ProductProviderProps) => {
+export function ProductProvider({
+  children,
+  productIndex,
+}: Readonly<ProductProviderProps>) {
   const currentProduct = useMemo(() => {
     return exampleProducts[productIndex]
   }, [productIndex])
@@ -21,12 +24,10 @@ const ProductProvider = ({ children, productIndex }: ProductProviderProps) => {
   )
 }
 
-const useProductContext = () => {
+export function useProductContext() {
   const context = useContext(ProductContext)
   if (context === undefined) {
     throw new Error('useProductContext must be used within an ProductProvider')
   }
   return context
 }
-
-export { ProductProvider, useProductContext }

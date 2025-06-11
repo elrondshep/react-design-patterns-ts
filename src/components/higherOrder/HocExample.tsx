@@ -10,7 +10,7 @@ const BaseComponentWithToggle = withToggle(BaseComponent)
 const BaseComponentWithLoading = withLoading(BaseComponent)
 const BaseComponentWithToggleLoading = withToggle(BaseComponentWithLoading)
 
-const HocExample = () => {
+export default function HocExample() {
   const baseComponentRef = useRef(null)
   const withToggleRef = useRef(null)
   const withLoadingRef = useRef(null)
@@ -337,5 +337,3 @@ const BaseComponentWithToggleLoading = withToggle(BaseComponentWithLoading)
     </div>
   )
 }
-
-export default HocExample

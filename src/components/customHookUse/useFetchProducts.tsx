@@ -10,12 +10,12 @@ type UseFetchProductsProps = {
   limit: number
   isError: boolean
 }
-const useFetchProducts = ({
+export default function useFetchProducts({
   skip,
   limit,
   isSlow,
   isError,
-}: UseFetchProductsProps) => {
+}: UseFetchProductsProps) {
   const [products, setProducts] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -51,5 +51,3 @@ const useFetchProducts = ({
 
   return { products, isLoading, error }
 }
-
-export default useFetchProducts

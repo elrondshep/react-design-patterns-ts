@@ -4,7 +4,7 @@ import hljs from 'highlight.js'
 import { useEffect, useRef, useState } from 'react'
 import MainPresentation from './MainPresentation'
 
-const ContainerPresentation = () => {
+export default function ContainerPresentation() {
   const [fetchIndex, setFetchIndex] = useState<number>(0)
   const componentRef = useRef(null)
   useEffect(() => {
@@ -171,5 +171,3 @@ export default MainPresentation
     </div>
   )
 }
-
-export default ContainerPresentation

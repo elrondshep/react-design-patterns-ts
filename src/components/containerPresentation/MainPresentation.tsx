@@ -9,12 +9,12 @@ type MainPresentationProps = {
   limit: number
   isError: boolean
 }
-const MainPresentation = ({
+export default function MainPresentation({
   skip,
   limit,
   isSlow,
   isError,
-}: MainPresentationProps) => {
+}: Readonly<MainPresentationProps>) {
   const [products, setProducts] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -49,5 +49,3 @@ const MainPresentation = ({
   }, [fetchProducts])
   return <ProductList loading={isLoading} error={error} products={products} />
 }
-
-export default MainPresentation

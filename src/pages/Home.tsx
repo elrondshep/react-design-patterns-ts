@@ -37,7 +37,7 @@ const menuOptions = [
   'Memoization',
   'Controlled & Uncontrolled',
 ]
-function Home() {
+export default function Home() {
   const [exampleOption, setExampleOption] = useState<string>('Home')
 
   return (
@@ -108,4 +108,3 @@ function Home() {
     </div>
   )
 }
-export default Home

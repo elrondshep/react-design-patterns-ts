@@ -3,7 +3,7 @@ import '@/styles/components/providersComponent.scss'
 import hljs from 'highlight.js'
 import { useEffect, useRef } from 'react'
 
-const ProvidersExample = () => {
+export default function ProvidersExample() {
   const code1Ref = useRef(null)
   const code2Ref = useRef(null)
   const code3Ref = useRef(null)
@@ -142,5 +142,3 @@ Card.Price = () => {
     </div>
   )
 }
-
-export default ProvidersExample

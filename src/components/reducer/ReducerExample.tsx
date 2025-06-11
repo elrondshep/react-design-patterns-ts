@@ -4,7 +4,7 @@ import hljs from 'highlight.js'
 import { useEffect, useRef } from 'react'
 import TodoList from './TodoList'
 
-const ReducerComponent = () => {
+export default function ReducerComponent() {
   const todoRef = useRef(null)
   const reducerRef = useRef(null)
   useEffect(() => {
@@ -225,5 +225,3 @@ export default ToggleReducer
     </div>
   )
 }
-
-export default ReducerComponent

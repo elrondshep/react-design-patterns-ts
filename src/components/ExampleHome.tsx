@@ -1,5 +1,6 @@
 import '@/styles/components/exampleHome.scss'
-const ExampleHome = () => {
+
+export default function ExampleHome() {
   return (
     <div className="example_home__container">
       <h2>React Design Patterns and Other Things and Examples and Things</h2>
@@ -54,5 +55,3 @@ const ExampleHome = () => {
     </div>
   )
 }
-
-export default ExampleHome
